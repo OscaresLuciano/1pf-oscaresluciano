@@ -1,0 +1,11 @@
+<div class="pb-3">
+  <button mat-flat-button (click)="openAlumnosModal()" color="primary">
+    <mat-icon>add</mat-icon>Crear Alumno
+  </button>
+</div>
+
+<app-alumnos-table
+  [dataSource]="alumnos"
+  (deleteAlumno)="onDeleteAlumno($event)"
+  (editAlumno)="onEditAlumno($event)"
+></app-alumnos-table>

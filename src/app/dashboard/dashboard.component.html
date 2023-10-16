@@ -1,0 +1,12 @@
+<mat-drawer-container class="dashboard-container" autosize>
+  <mat-drawer style="width: 200px" [opened]="showSidebar" #drawer mode="side">
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+  <div class="sidebar-content">
+    <app-toolbar (toggleSidebar)="showSidebar = !showSidebar"></app-toolbar>
+    <main>
+      <h1 appTextSize fontWeight="500">Alumnos</h1>
+      <app-alumnos></app-alumnos>
+    </main>
+  </div>
+</mat-drawer-container>
