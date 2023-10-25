@@ -5,8 +5,9 @@
   <div class="sidebar-content">
     <app-toolbar (toggleSidebar)="showSidebar = !showSidebar"></app-toolbar>
     <main>
-      <h1 appTextSize fontWeight="500">Alumnos</h1>
-      <app-alumnos></app-alumnos>
+      <!-- <app-auth></app-auth>
+      <app-alumnos></app-alumnos> -->
+      <router-outlet></router-outlet>
     </main>
   </div>
 </mat-drawer-container>

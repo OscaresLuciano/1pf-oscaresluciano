@@ -9,6 +9,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MatListModule } from '@angular/material/list';
+import { AuthModule } from '../auth/auth.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -24,7 +26,9 @@ import { MatListModule } from '@angular/material/list';
     AlumnosModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    AuthModule,
+    RouterModule
   ],
   exports: [
     DashboardComponent

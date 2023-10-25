@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Alumno } from '../../modals';
+import { Alumno } from '../../../../../core/models';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-alumnos-modal',
@@ -32,6 +33,11 @@ export class AlumnosModalComponent {
       this.userForm.markAllAsTouched();
     } else {
       this.matDialogRef.close(this.userForm.value);
+      Swal.fire(
+        '',
+        this.editarAlumno ? "Alumno editado correctamente!" : "Alumno agregado correctamente!",
+        'success'
+      )
     }
   }
 

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../core/services/auth.service';
+import { Observable } from 'rxjs';
+import { Usuario } from '../core/models';
 
 @Component({
   selector: 'app-dashboard',

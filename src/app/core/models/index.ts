@@ -4,3 +4,8 @@ export interface Alumno {
     lastName: string;
     email: string;
 }
+
+export interface Usuario {
+    email: string;
+    password: string;
+}

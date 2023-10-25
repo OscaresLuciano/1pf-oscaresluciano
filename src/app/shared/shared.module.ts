@@ -10,6 +10,8 @@ import { FullNamePipe } from './pipes/full-name.pipe';
 import { MatTableModule } from '@angular/material/table';
 import { FormErrorsPipe } from './pipes/form-errors.pipe';
 import { TextSizeDirective } from './directives/text-size.directive';
+import { MatCardModule } from '@angular/material/card';
+
 
 
 
@@ -31,6 +33,7 @@ import { TextSizeDirective } from './directives/text-size.directive';
     MatDialogModule,
     FullNamePipe,
     MatTableModule,
+    MatCardModule,
     FormErrorsPipe,
     TextSizeDirective
   ]

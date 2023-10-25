@@ -1,17 +1,8 @@
+<h2 class="text-truncate pt-3 px-3 m-0">
+  {{ authUserObs$ | async }}
+</h2>
 <mat-nav-list>
-  <mat-list-item>
-    <a>Home</a>
-  </mat-list-item>
-  <mat-list-item>
-    <a>Usuarios</a>
-  </mat-list-item>
-  <mat-list-item>
-    <a>Cursos</a>
-  </mat-list-item>
-  <mat-list-item [activated]="true">
-    <a>Alumnos</a>
-  </mat-list-item>
-  <mat-list-item>
-    <a>Inscripciones</a>
+  <mat-list-item *ngFor="let item of navItems" routerLink="{{ item }}">
+    <a> {{ item | titlecase }} </a>
   </mat-list-item>
 </mat-nav-list>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Alumno } from '../../modals';
+import { Alumno } from '../../../../../core/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alumnos-table',
@@ -19,4 +20,10 @@ export class AlumnosTableComponent {
   editAlumno = new EventEmitter<Alumno>();
 
   displayedColumns = ['id', 'fullname', 'email', 'actions'];
+
+  constructor(private router: Router) {}
+
+  gotToDetails(alumnoId: number): void {
+    this.router.navigate(['dashboard','alumnos','details', alumnoId]);
+  }
 }

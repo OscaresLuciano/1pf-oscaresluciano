@@ -1,3 +1,4 @@
+<h1 appTextSize fontWeight="500">Alumnos</h1>
 <div class="pb-3">
   <button mat-flat-button (click)="openAlumnosModal()" color="primary">
     <mat-icon>add</mat-icon>Crear Alumno
@@ -9,3 +10,5 @@
   (deleteAlumno)="onDeleteAlumno($event)"
   (editAlumno)="onEditAlumno($event)"
 ></app-alumnos-table>
+
+<router-outlet></router-outlet>

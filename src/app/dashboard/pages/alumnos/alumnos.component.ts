@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AlumnosModalComponent } from './components/alumnos-modal/alumnos-modal.component';
-import { Alumno } from './modals';
+import { Alumno } from '../../../core/models';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-alumnos',
@@ -9,8 +10,6 @@ import { Alumno } from './modals';
   styleUrls: ['./alumnos.component.scss']
 })
 export class AlumnosComponent {
-
-  userName= '';
 
   alumnos: Alumno[] = [
   {
@@ -66,12 +65,22 @@ onEditAlumno(alumno: Alumno): void {
     }
   })
 }
+
 onDeleteAlumno(alumnoId: number): void {
-  if(confirm('Estás seguro de borrar este alumno?')){
-    this.alumnos = [...this.alumnos.filter(
-      (alumno) => alumno.id !== alumnoId
-    )]
-  }
+  Swal.fire({
+    title: 'Confirmar eliminación',
+    text: 'Estás seguro de borrar este alumno?',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonText: 'Sí, eliminar alumno',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.alumnos = [...this.alumnos.filter(
+        (alumno) => alumno.id !== alumnoId
+      )]
+    }
+  });
 }
 
 }

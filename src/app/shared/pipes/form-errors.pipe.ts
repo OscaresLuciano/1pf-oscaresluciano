@@ -19,7 +19,7 @@ export class FormErrorsPipe implements PipeTransform {
       }
   
       if ('minlength' in value) {
-        errorsMesages.push('Debe tener al menos 3 caracteres.');
+        errorsMesages.push('Debe tener al menos 4 caracteres.');
       }
   
       if ('maxlength' in value) {

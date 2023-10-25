@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "1pf-oscaresluciano": {
+    "programacionreactiva-oscaresluciano": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/1pf-oscaresluciano",
+            "outputPath": "dist/programacionreactiva-oscaresluciano",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "1pf-oscaresluciano:build:production"
+              "browserTarget": "programacionreactiva-oscaresluciano:build:production"
             },
             "development": {
-              "browserTarget": "1pf-oscaresluciano:build:development"
+              "browserTarget": "programacionreactiva-oscaresluciano:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "1pf-oscaresluciano:build"
+            "browserTarget": "programacionreactiva-oscaresluciano:build"
           }
         },
         "test": {

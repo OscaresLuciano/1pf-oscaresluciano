@@ -1,0 +1,37 @@
+<div class="d-flex justify-content-center">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title appTextSize fontWeight="500">
+        Ingresar Email y Contraseña
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="pt-3">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field class="w-100">
+          <mat-label> Email </mat-label>
+          <input matInput formControlName="email" type="text" />
+          <mat-error>
+            {{ loginForm.get("email")?.errors | formErrors }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <mat-label> Contraseña </mat-label>
+          <input matInput formControlName="password" type="text" />
+          <mat-error>
+            {{ loginForm.get("password")?.errors | formErrors }}
+          </mat-error>
+        </mat-form-field>
+        <mat-card-actions align="end">
+          <button
+            mat-flat-button
+            color="primary"
+            [disabled]="loginForm.invalid"
+            type="submit"
+          >
+            Ingresar
+          </button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

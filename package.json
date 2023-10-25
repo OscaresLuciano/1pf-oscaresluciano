@@ -1,5 +1,5 @@
 {
-  "name": "1pf-oscaresluciano",
+  "name": "programacionreactiva-oscaresluciano",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -24,6 +24,7 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.7.32",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
