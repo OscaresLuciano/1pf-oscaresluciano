@@ -1,0 +1,22 @@
+<div class="container d-flex align-items-center justify-content-center">
+  <div class="col-8">
+    <div *ngIf="curso$ | async as curso">
+      <mat-card class="my-custom-card">
+        <mat-card-header>
+          <mat-card-title>
+            <h2>{{ curso.name }}</h2>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Comienza: {{ curso.startDate | date : "dd/MM/YY" }}</p>
+          <p>Finaliza: {{ curso.endDate | date : "dd/MM/YY" }}</p>
+        </mat-card-content>
+        <mat-card-actions class="py-3">
+          <button (click)="enroll()" mat-flat-button color="primary">
+            <mat-icon> add </mat-icon> Inscribirme
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

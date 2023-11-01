@@ -1,0 +1,5 @@
+<h1 appTextSize fontWeight="500">Inscripciones</h1>
+
+<app-inscripciones-table
+  [dataSource]="(courses$ | async) || []"
+></app-inscripciones-table>

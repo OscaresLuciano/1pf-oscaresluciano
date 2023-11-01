@@ -1,0 +1,12 @@
+<h1 appTextSize fontWeight="500">Cursos</h1>
+<div class="pb-3">
+  <button mat-flat-button (click)="addCourse()" color="primary">
+    <mat-icon>add</mat-icon>Crear Curso
+  </button>
+</div>
+
+<app-cursos-table
+  [dataSource]="(courses$ | async) || []"
+  (deleteCourse)="onDeleteCourse($event)"
+  (editCourse)="onEditCourse($event)"
+></app-cursos-table>

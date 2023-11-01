@@ -4,9 +4,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alumnos-table',
-  templateUrl: './alumnos-table.component.html',
-  styles: [
-  ]
+  templateUrl: './alumnos-table.component.html'
 })
 export class AlumnosTableComponent {
 
@@ -17,13 +15,13 @@ export class AlumnosTableComponent {
   deleteAlumno = new EventEmitter<number>();
 
   @Output()
-  editAlumno = new EventEmitter<Alumno>();
+  editAlumno = new EventEmitter<number>();
 
   displayedColumns = ['id', 'fullname', 'email', 'actions'];
 
   constructor(private router: Router) {}
 
-  gotToDetails(alumnoId: number): void {
+  alumnoDetails(alumnoId: number): void {
     this.router.navigate(['dashboard','alumnos','details', alumnoId]);
   }
 }

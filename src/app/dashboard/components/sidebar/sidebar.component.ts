@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 import { Observable, map } from 'rxjs';
 import { Usuario } from 'src/app/core/models';
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent {
   showFiller = false;
 
   navItems = [
-    'home', 'usuarios', 'cursos', 'alumnos', 'inscripciones'
+    'home', 'cursos', 'alumnos', 'inscripciones'
   ]
+  
   authUserObs$: Observable<string>
 
   constructor(authService: AuthService) {

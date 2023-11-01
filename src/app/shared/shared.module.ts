@@ -11,6 +11,9 @@ import { MatTableModule } from '@angular/material/table';
 import { FormErrorsPipe } from './pipes/form-errors.pipe';
 import { TextSizeDirective } from './directives/text-size.directive';
 import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 
 
@@ -35,7 +38,9 @@ import { MatCardModule } from '@angular/material/card';
     MatTableModule,
     MatCardModule,
     FormErrorsPipe,
-    TextSizeDirective
+    TextSizeDirective,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class SharedModule { }

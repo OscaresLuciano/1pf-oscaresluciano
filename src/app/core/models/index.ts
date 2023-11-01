@@ -9,3 +9,10 @@ export interface Usuario {
     email: string;
     password: string;
 }
+
+export interface Curso {
+    id: number;
+    name: string;
+    startDate: Date;
+    endDate: Date;
+}

@@ -1,7 +1,9 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Alumno } from '../../../../../core/models';
+import { AlumnosService } from '../../alumnos.service';
+
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,32 +12,44 @@ import Swal from 'sweetalert2';
 })
 export class AlumnosModalComponent {
 
-  userForm: FormGroup;
+  nameControl = new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(20)]);
+  lastnameControl = new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(20)]);
+  emailControl = new FormControl('',[Validators.required, Validators.email, Validators.minLength(4), Validators.maxLength(30)])
+  
+  alumnoForm = new FormGroup({
+    name: this.nameControl,
+    lastName: this.lastnameControl,
+    email: this.emailControl,
+  });
 
   constructor(
-    private fb: FormBuilder,
     private matDialogRef: MatDialogRef<AlumnosModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public editarAlumno?: Alumno,
+    private alumnosService: AlumnosService,
+    @Inject(MAT_DIALOG_DATA) public alumnoId?: number,
     ) {
-    this.userForm = fb.group({
-      name: ['',[Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
-      lastName: ['',[Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
-      email: ['',[Validators.required, Validators.email, Validators.minLength(4), Validators.maxLength(30)]],
-    });
+      if (alumnoId) {
+        this.alumnosService.getAlumnoById$(alumnoId).subscribe({
+          next: (c) => {
+            if (c) {
+              this.alumnoForm.patchValue(c)
+            }
+          }
+        })
+      }
+  }
 
-    if (this.editarAlumno) {
-      this.userForm.patchValue(this.editarAlumno);
-    }
+  public get isEditing(): boolean {
+    return !!this.alumnoId
   }
 
   onSubmit(): void {
-    if (this.userForm.invalid) {
-      this.userForm.markAllAsTouched();
+    if (this.alumnoForm.invalid) {
+      this.alumnoForm.markAllAsTouched();
     } else {
-      this.matDialogRef.close(this.userForm.value);
+      this.matDialogRef.close(this.alumnoForm.value);
       Swal.fire(
         '',
-        this.editarAlumno ? "Alumno editado correctamente!" : "Alumno agregado correctamente!",
+        this.isEditing ? "Alumno editado correctamente!" : "Alumno agregado correctamente!",
         'success'
       )
     }
