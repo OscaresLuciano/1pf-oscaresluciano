@@ -6,6 +6,7 @@ import { AlumnosModalComponent } from './components/alumnos-modal/alumnos-modal.
 import { AlumnosTableComponent } from './components/alumnos-table/alumnos-table.component';
 import { AlumnosDetailComponent } from './components/alumnos-detail/alumnos-detail.component';
 import { RouterModule } from '@angular/router';
+import { AlumnosRoutingRoutingModule } from './alumnos-routing.module';
 
 
 
@@ -20,6 +21,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     SharedModule,
     RouterModule,
+    AlumnosRoutingRoutingModule
   ],
   exports: [
     AlumnosComponent

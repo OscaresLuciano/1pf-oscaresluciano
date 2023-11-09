@@ -1,0 +1,27 @@
+<form [formGroup]="loginForm">
+  <mat-form-field class="w-100">
+    <mat-label> Email </mat-label>
+    <input matInput formControlName="email" type="text" />
+    <mat-error>
+      {{ loginForm.get("email")?.errors | formErrors }}
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label> Contraseña </mat-label>
+    <input matInput formControlName="password" type="password" />
+    <mat-error>
+      {{ loginForm.get("password")?.errors | formErrors }}
+    </mat-error>
+  </mat-form-field>
+  <mat-card-actions align="end">
+    <button
+      (click)="login()"
+      [disabled]="loginForm.invalid"
+      mat-flat-button
+      color="primary"
+      type="submit"
+    >
+      Log In
+    </button>
+  </mat-card-actions>
+</form>

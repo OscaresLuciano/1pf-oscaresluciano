@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { CursosTableComponent } from './components/cursos-table/cursos-table.component';
 import { CursosModalComponent } from './components/cursos-modal/cursos-modal.component';
 import { CursosDetailComponent } from './components/cursos-detail/cursos-detail.component';
+import { CursosRoutingModule } from './cursos-routing.module';
 
 
 
@@ -20,6 +21,7 @@ import { CursosDetailComponent } from './components/cursos-detail/cursos-detail.
     CommonModule,
     SharedModule,
     RouterModule,
+    CursosRoutingModule
   ],
   exports: [
     CursosComponent

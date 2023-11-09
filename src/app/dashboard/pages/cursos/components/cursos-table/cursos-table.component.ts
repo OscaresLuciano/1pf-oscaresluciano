@@ -19,10 +19,4 @@ export class CursosTableComponent {
 
   displayedColumns = ['id', 'name', 'startDate', 'endDate', 'actions'];
 
-  constructor(private router: Router) {}
-
-  courseDetails(cursoId: number): void {
-    this.router.navigate(['dashboard','cursos','detail', cursoId]);
-  }
-
 }

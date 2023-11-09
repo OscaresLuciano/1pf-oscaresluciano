@@ -12,19 +12,25 @@ export class AlumnosService {
       id: 1,
       name: 'Pablo',
       lastName: 'Salazar',
-      email: 'pablo@mail.com'
+      email: 'pablo@mail.com',
+      token: 'asdasf7809789asda',
+      role: 'user'
     },
     {
       id: 2,
       name: 'Laura',
       lastName: 'Sosa',
-      email: 'lauso@mail.com'
+      email: 'lauso@mail.com',
+      token: 'asdkjlagfa89asfjkñl',
+      role: 'user'
     },
     {
       id: 3,
       name: 'Mateo',
       lastName: 'Ruiz',
-      email: 'ruizmate@mail.com'
+      email: 'ruizmate@mail.com',
+      token: 'jk54l6hk5h6hhg',
+      role: 'user'
     }
   ]
 

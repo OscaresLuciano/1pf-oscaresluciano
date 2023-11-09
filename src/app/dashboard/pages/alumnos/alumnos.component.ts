@@ -32,6 +32,8 @@ export class AlumnosComponent {
             name: result.name,
             lastName: result.lastName,
             email: result.email,
+            token: 'asdasd',
+            role: 'admin',
           })
         }
       }

@@ -1,8 +1,18 @@
-<h2 class="text-truncate pt-3 px-3 m-0">
+<!-- <h2 class="text-truncate pt-3 px-3 m-0">
   {{ authUserObs$ | async }}
-</h2>
+</h2> -->
 <mat-nav-list>
   <mat-list-item *ngFor="let item of navItems" routerLink="{{ item }}">
     <a> {{ item | titlecase }} </a>
+  </mat-list-item>
+  <mat-list-item>
+    <button
+      style="margin-left: 1rem !important"
+      (click)="logOut()"
+      mat-flat-button
+      color="warn"
+    >
+      Cerrar sesión
+    </button>
   </mat-list-item>
 </mat-nav-list>
