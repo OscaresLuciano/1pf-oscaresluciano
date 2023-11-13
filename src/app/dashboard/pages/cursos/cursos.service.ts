@@ -1,57 +1,46 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, concatMap } from 'rxjs';
 import { Curso } from 'src/app/core/models';
+import { environment } from 'src/environments/environment.local';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CursosService {
 
-  courses: Curso[] = [
-    {
-      id: 1,
-      name: 'Javascript',
-      startDate: new Date(),
-      endDate: new Date()
-    },
-    {
-      id: 2,
-      name: 'Angular',
-      startDate: new Date(),
-      endDate: new Date()
-    },
-    {
-      id: 3,
-      name: 'React',
-      startDate: new Date(),
-      endDate: new Date()
-    },
-  ];
+  courses: Curso[] = [];
 
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient,
+  ) { }
 
   getCourses$(): Observable<Curso[]> {
-    return of (this.courses)
+    return this.httpClient
+      .get<Curso[]>(`${environment.baseUrl}/courses`);
   }
 
   createCourse$(payload: Curso): Observable<Curso[]> {
-    this.courses.push(payload);
-    return of([...this.courses]);
+    return this.httpClient
+      .post<Curso>(`${environment.baseUrl}/courses`, payload)
+      .pipe(concatMap(() => this.getCourses$()));
   }
 
-  deleteCourses$(courseId: number): Observable<Curso[]> {
-    this.courses = this.courses.filter((c) => c.id !== courseId );
-    return of(this.courses);
+  deleteCourses$(cursoId: number): Observable<Curso[]> {
+    return this.httpClient
+      .delete<Curso>(`${environment.baseUrl}/courses/${cursoId}`)
+      .pipe(concatMap(() => this.getCourses$()));
   }
 
-  editCourse$(id: number, payload: Curso): Observable<Curso[]> {
-    return of(
-      this.courses.map((c) => (c.id === id ? { ...c, ...payload } : c))
-    );
+  editCourse$(cursoId: number, payload: Curso): Observable<Curso[]> {
+    return this.httpClient
+      .put<Curso>(`${environment.baseUrl}/courses/${cursoId}`, payload)
+      .pipe(concatMap(() => this.getCourses$()));
   }
 
-  getCourseById$(id: number): Observable<Curso | undefined> {
-    return of(this.courses.find((c) => c.id === id));
+  getCourseById$(cursoId: number): Observable<Curso | undefined> {
+    return this.httpClient
+      .get<Curso>(`${environment.baseUrl}/courses/${cursoId}`);
   }
 
 }

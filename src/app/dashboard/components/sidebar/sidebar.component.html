@@ -2,7 +2,11 @@
   {{ authUserObs$ | async }}
 </h2> -->
 <mat-nav-list>
-  <mat-list-item *ngFor="let item of navItems" routerLink="{{ item }}">
+  <mat-list-item
+    *ngFor="let item of navItems"
+    routerLink="{{ item }}"
+    routerLinkActive
+  >
     <a> {{ item | titlecase }} </a>
   </mat-list-item>
   <mat-list-item>
