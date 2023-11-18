@@ -10,8 +10,8 @@ export class InscripcionesTableComponent {
   @Input()
   dataSource: Curso[] = [];
 
-  enroll(): void {
-    console.log('Inscripto')
+  enroll(course: any) {
+    course.inscrito = true;
   }
 
   displayedColumns = ['id', 'name', 'startDate', 'endDate', 'enroll'];

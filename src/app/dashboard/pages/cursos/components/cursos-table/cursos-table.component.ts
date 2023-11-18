@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Curso } from 'src/app/core/models';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cursos-table',
@@ -12,10 +11,10 @@ export class CursosTableComponent {
   dataSource: Curso[] = [];
 
   @Output()
-  deleteCourse = new EventEmitter();
+  deleteCourse = new EventEmitter<number>();
 
   @Output()
-  editCourse = new EventEmitter();
+  editCourse = new EventEmitter<Curso>();
 
   displayedColumns = ['id', 'name', 'startDate', 'endDate', 'actions'];
 

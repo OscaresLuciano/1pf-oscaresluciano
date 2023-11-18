@@ -11,6 +11,8 @@ import { Observable, of } from 'rxjs';
 })
 export class CursosDetailComponent implements OnInit {
 
+  inscripto: boolean = false;
+
   curso$: Observable<Curso | undefined> = of(undefined);
 
   constructor(
@@ -23,7 +25,7 @@ export class CursosDetailComponent implements OnInit {
     this.curso$ = this.cursosService.getCourseById$(cursoId);
   }
 
-  enroll(): void {
-    console.log('Inscripto');
+  enroll() {
+    this.inscripto = true;
   }
 }

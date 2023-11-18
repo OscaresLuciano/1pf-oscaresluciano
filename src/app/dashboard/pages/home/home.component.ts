@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service';
+import { Observable, map } from 'rxjs';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { Usuario } from 'src/app/core/models';
 
 @Component({
@@ -10,8 +10,16 @@ import { Usuario } from 'src/app/core/models';
 })
 export class HomeComponent {
 
-  constructor(private authService: AuthService) {}
+  public authUser$: Observable<Usuario | null>
 
-  usuarioLogueado$: Observable<Usuario | null> = this.authService.authUser$;
+  constructor(private authService: AuthService) {
+    this.authUser$ = this.authService.authUser$;
+  }
+
+  get fullName$(): Observable<string> {
+    return this.authUser$.pipe(
+      map((user) => `${user?.name} ${user?.lastName}`)
+      );
+  }
 
 }

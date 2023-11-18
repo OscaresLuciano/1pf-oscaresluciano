@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
-import { Usuario } from '../core/models';
+import { Usuario } from '../../core/models';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment.local';
-import { LoginPayload } from '../core/models';
+import { LoginPayload } from '../../core/models';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 

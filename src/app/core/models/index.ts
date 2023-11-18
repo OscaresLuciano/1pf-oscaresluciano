@@ -1,12 +1,3 @@
-export interface Alumno {
-    id: number;
-    name: string;
-    lastName: string;
-    email: string;
-    token: string;
-    role: string;
-}
-
 export interface Usuario {
     id: number;
     email: string;
@@ -20,8 +11,8 @@ export interface Usuario {
 export interface Curso {
     id: number;
     name: string;
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate: string;
 }
 
 export interface LoginPayload {
