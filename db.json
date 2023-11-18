@@ -1,96 +1,14 @@
 {
   "users": [
     {
-      "id": 1,
       "name": "admin",
       "lastName": "admin",
       "email": "admin@mail.com",
       "password": 1234,
       "token": "ashfljasf679agdsdhlo",
-      "role": "administrador"
-    },
-    {
-      "id": 2,
-      "name": "Usuario",
-      "lastName": "de Prueba",
-      "email": "test@mail.com",
-      "password": 1111,
-      "token": "asf576as5ffgjag",
-      "role": "administrador"
-    },
-    {
-      "name": "Juan",
-      "lastName": "Papa",
-      "email": "ahora@mail.com",
-      "password": "asdasdas",
-      "role": "usuario",
-      "id": 3
-    },
-    {
-      "id": 5,
-      "name": "Luciano",
-      "lastName": "Oscares",
-      "email": "loscares@mail.com",
-      "password": 1111,
-      "token": "asfjahga76s8fgtaogda342",
-      "role": "administrador"
-    },
-    {
-      "name": "Raul",
-      "lastName": "Castro",
-      "email": "rcastro@mail.com",
-      "password": "1234",
-      "role": "usuario",
-      "id": 6
-    },
-    {
-      "id": 7,
-      "name": "Maria",
-      "lastName": "Rodriguez",
-      "email": "mrodriguez@mail.com",
-      "password": "asdfafs",
-      "token": "Ps2asgh54h45h5t8Lagqp",
-      "role": "usuario"
-    },
-    {
-      "name": "Uciel",
-      "lastName": "Dupuy",
-      "email": "upu@mail.com",
-      "password": "asdasdff",
-      "role": "usuario",
-      "id": 8
+      "role": "admin",
+      "id": 1
     }
   ],
-  "courses": [
-    {
-      "name": "Javascript",
-      "startDate": "2023-11-20T03:00:00.000Z",
-      "endDate": "2023-11-30T03:00:00.000Z",
-      "id": 1
-    },
-    {
-      "name": "React",
-      "startDate": "2023-11-21T03:00:00.000Z",
-      "endDate": "2023-12-29T03:00:00.000Z",
-      "id": 2
-    },
-    {
-      "name": "Angular",
-      "startDate": "2023-11-16T03:00:00.000Z",
-      "endDate": "2023-12-06T03:00:00.000Z",
-      "id": 3
-    },
-    {
-      "name": "Corte y confección",
-      "startDate": "2023-11-16T03:00:00.000Z",
-      "endDate": "2024-01-19T03:00:00.000Z",
-      "id": 4
-    },
-    {
-      "name": "Diseño web",
-      "startDate": "2023-11-22T03:00:00.000Z",
-      "endDate": "2024-02-15T03:00:00.000Z",
-      "id": 5
-    }
-  ]
+  "courses": []
 }

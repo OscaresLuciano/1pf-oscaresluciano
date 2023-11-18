@@ -19,9 +19,9 @@ const routes: Routes = [
                 component: HomeComponent
             },
             {
-                path: 'usuarios',
-                loadChildren: () => import('./pages/usuarios/usuarios.module')
-                .then((m) => m.UsuariosModule)
+                path: 'alumnos',
+                loadChildren: () => import('./pages/alumnos/alumnos.module')
+                .then((m) => m.AlumnosModule)
             },
             {
                 path: 'cursos',

@@ -30,14 +30,6 @@ export class FormErrorsPipe implements PipeTransform {
         errorsMesages.push('Debe ser un correo valido.');
       }
 
-      if('matStartDateInvalid' in value) {
-        errorsMesages.push('Debe ingresar una fecha valida');
-      }
-
-      if('matEndDateInvalid' in value) {
-        errorsMesages.push('Debe ingresar una fecha valida');
-      }
-
     }
   
     return errorsMesages.join(' ');

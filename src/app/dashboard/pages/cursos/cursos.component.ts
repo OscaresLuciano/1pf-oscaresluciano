@@ -17,20 +17,22 @@ export class CursosComponent {
   courses$: Observable<Curso[]>;
 
   constructor(
-    private cursosService: CursosService,
-    private matDialog: MatDialog,
+      private cursosService: CursosService,
+      private matDialog: MatDialog
     ) {
     this.courses$ = this.cursosService.getCourses$()
   }
 
   addCourse() : void {
-    this.matDialog
-    .open(CursosModalComponent)
-    .afterClosed()
-    .subscribe({
-      next: (v) => {
-        if (!!v) {
-          this.courses$ = this.cursosService.createCourse$(v);
+    this.matDialog.open(CursosModalComponent).afterClosed().subscribe({
+      next: (result) => {
+        if (result) {
+          this.courses$ = this.cursosService.createCourse$({
+            id: new Date().getTime(),
+            name: result.name,
+            startDate: result.startDate,
+            endDate: result.endDate,
+          })
         }
       }
     })
@@ -44,23 +46,23 @@ export class CursosComponent {
       showCancelButton: true,
       confirmButtonText: 'Sí, eliminar curso',
       cancelButtonText: 'Cancelar'
-    }).then((v) => {
-      if (v.isConfirmed) {
+    }).then((result) => {
+      if (result.isConfirmed) {
         this.courses$ = this.cursosService.deleteCourses$(courseId);
       }
     });
   }
 
-  onEditCourse(curso: Curso): void {
+  onEditCourse(courseId: number): void {
     this.matDialog
       .open(CursosModalComponent, {
-        data: curso.id,
+        data: courseId,
       })
       .afterClosed()
       .subscribe({
-        next: (v) => {
-          if (!!v) {
-            this.courses$ = this.cursosService.editCourse$(curso.id, v)
+        next: (result) => {
+          if (!!result) {
+            this.courses$ = this.cursosService.editCourse$(courseId, result);
           }
         },
       });

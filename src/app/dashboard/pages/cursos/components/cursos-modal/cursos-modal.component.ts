@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CursosService } from '../../cursos.service';
 
@@ -13,9 +13,9 @@ export class CursosModalComponent {
 
   todayDate:Date = new Date();
 
-  nameControl = new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(20)]);
-  startDateControl = new FormControl('',[Validators.required]);
-  endDateControl = new FormControl('',[Validators.required]);
+  nameControl = new FormControl();
+  startDateControl = new FormControl();
+  endDateControl = new FormControl();
 
 
   courseForm = new FormGroup({
