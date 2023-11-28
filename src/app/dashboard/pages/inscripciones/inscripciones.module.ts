@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { InscripcionesComponent } from './inscripciones.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { InscripcionesTableComponent } from './components/inscripciones-table/inscripciones-table.component';
+import { EffectsModule } from '@ngrx/effects';
+import { InscripcionEffects } from './store/inscripcion.effects';
 
 
 
@@ -13,7 +15,8 @@ import { InscripcionesTableComponent } from './components/inscripciones-table/in
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    EffectsModule.forFeature([InscripcionEffects])
   ],
   exports: [
     InscripcionesComponent

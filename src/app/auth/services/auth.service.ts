@@ -6,21 +6,26 @@ import { environment } from 'src/environments/environment.local';
 import { LoginPayload } from '../../core/models';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Store } from '@ngrx/store';
+import { AuthActions } from 'src/app/store/auth/auth.actions';
+import { selectAuthUser } from 'src/app/store/auth/auth.selectors';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  
-  private _authUser$ = new BehaviorSubject<Usuario | null>(null);
-  public authUser$ = this._authUser$.asObservable();
+  public authUser$ = this.store.select(selectAuthUser);
 
   constructor(
     private httpClient: HttpClient,
     private router: Router,
+    private store: Store
     ) { }
 
-// json-server db.json --watch
+    private handleAuthUser(authUser: Usuario) {
+      this.store.dispatch(AuthActions.setAuthUser({ data: authUser }));
+      localStorage.setItem('token', authUser.token);
+    }
   
   login(payload: LoginPayload): void {
     const headers = new HttpHeaders({
@@ -41,8 +46,7 @@ export class AuthService {
           alert('invalido')
         } else {
           const authUser = response[0];
-          this._authUser$.next(authUser);
-          localStorage.setItem('token', authUser.token);
+          this.handleAuthUser(authUser);
           this.router.navigate(['/dashboard/home'])
         }
       },
@@ -63,8 +67,7 @@ export class AuthService {
             return false;
           } else {
             const authUser = usuarios[0];
-            this._authUser$.next(authUser);
-            localStorage.setItem('token', authUser.token);
+            this.handleAuthUser(authUser);
             return true;
           }
         })
@@ -82,7 +85,7 @@ export class AuthService {
       confirmButtonText: "Si, cerrar sesión.",
     }).then((result) => {
       if (result.isConfirmed) {
-        this._authUser$.next(null);
+        this.store.dispatch(AuthActions.resetState());
         localStorage.removeItem('token');
         this.router.navigate(['/auth/login']);
       }

@@ -6,6 +6,7 @@ import { Usuario } from "src/app/core/models";
 import { environment } from "src/environments/environment.local";
 import { MockProvider } from "ng-mocks";
 import { Router } from "@angular/router";
+import { UserRole } from "src/app/core/models/roles.enum";
 
 fdescribe('AuthService', () => {
 
@@ -37,7 +38,7 @@ fdescribe('AuthService', () => {
             lastName: 'fakeLastName',
             password: '132456789',
             token: 'askjlfa7g6aasjkhf67as89d',
-            role: 'administrador'
+            role: UserRole.ADMIN
         }
         
         authService.login({

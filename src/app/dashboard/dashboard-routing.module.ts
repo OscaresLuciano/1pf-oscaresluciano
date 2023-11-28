@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { InscripcionesComponent } from "./pages/inscripciones/inscripciones.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { DashboardComponent } from "./dashboard.component";
+import { adminGuard } from "../core/guards/admin.guard";
 
 const routes: Routes = [
     {
@@ -20,6 +21,7 @@ const routes: Routes = [
             },
             {
                 path: 'usuarios',
+                canActivate: [adminGuard],
                 loadChildren: () => import('./pages/usuarios/usuarios.module')
                 .then((m) => m.UsuariosModule)
             },

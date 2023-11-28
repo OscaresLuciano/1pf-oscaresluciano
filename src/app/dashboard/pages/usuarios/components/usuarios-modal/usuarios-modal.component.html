@@ -34,7 +34,7 @@
       <div class="col-6">
         <mat-form-field class="w-100">
           <mat-label>Email</mat-label>
-          <input formControlName="email" matInput type="text" />
+          <input formControlName="email" matInput type="email" />
           <mat-error>
             {{ usuarioForm.get("email")?.errors | formErrors }}
           </mat-error>
@@ -48,7 +48,7 @@
           <mat-label>Password</mat-label>
           <input formControlName="password" matInput type="password" />
           <mat-error>
-            {{ usuarioForm.get("role")?.errors | formErrors }}
+            {{ usuarioForm.get("password")?.errors | formErrors }}
           </mat-error>
         </mat-form-field>
       </div>
@@ -59,8 +59,8 @@
         <mat-form-field class="w-100">
           <mat-label>Rol</mat-label>
           <mat-select formControlName="role">
-            <mat-option value="administrador">Administrador</mat-option>
-            <mat-option value="usuario">Usuario</mat-option>
+            <mat-option value="ADMIN">Admin</mat-option>
+            <mat-option value="EMPLOYEE">Employee</mat-option>
           </mat-select>
           <mat-error>
             {{ usuarioForm.get("role")?.errors | formErrors }}

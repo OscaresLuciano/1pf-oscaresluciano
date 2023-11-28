@@ -1,29 +1,30 @@
 {
   "users": [
     {
-      "id": 1,
       "name": "admin",
       "lastName": "admin",
-      "email": "admin@mail.com",
-      "password": 1234,
-      "token": "ashfljasf679agdsdhlo",
-      "role": "administrador"
+      "email": "a@mail.com",
+      "password": "1111",
+      "role": "ADMIN",
+      "token": "jdasugjd89sjg0sdfgjjjs",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Usuario",
+      "name": "Emplea2",
       "lastName": "de Prueba",
-      "email": "test@mail.com",
+      "email": "e@mail.com",
       "password": 1111,
-      "token": "asf576as5ffgjag",
-      "role": "administrador"
+      "role": "EMPLOYEE",
+      "token": "bnbMQeeukyN1ydHqBMUN",
+      "id": 2
     },
     {
       "name": "Juan",
       "lastName": "Papa",
       "email": "ahora@mail.com",
       "password": "asdasdas",
-      "role": "usuario",
+      "role": "EMPLOYEE",
+      "token": "has78fa7sfa9s8fajss88",
       "id": 3
     },
     {
@@ -33,14 +34,14 @@
       "email": "loscares@mail.com",
       "password": 1111,
       "token": "asfjahga76s8fgtaogda342",
-      "role": "administrador"
+      "role": "ADMIN"
     },
     {
       "name": "Raul",
       "lastName": "Castro",
       "email": "rcastro@mail.com",
       "password": "1234",
-      "role": "usuario",
+      "role": "EMPLOYEE",
       "id": 6
     },
     {
@@ -50,14 +51,14 @@
       "email": "mrodriguez@mail.com",
       "password": "asdfafs",
       "token": "Ps2asgh54h45h5t8Lagqp",
-      "role": "usuario"
+      "role": "EMPLOYEE"
     },
     {
       "name": "Uciel",
       "lastName": "Dupuy",
       "email": "upu@mail.com",
       "password": "asdasdff",
-      "role": "usuario",
+      "role": "EMPLOYEE",
       "id": 8
     }
   ],
@@ -81,16 +82,27 @@
       "id": 3
     },
     {
-      "name": "Corte y confección",
-      "startDate": "2023-11-16T03:00:00.000Z",
-      "endDate": "2024-01-19T03:00:00.000Z",
-      "id": 4
-    },
-    {
       "name": "Diseño web",
       "startDate": "2023-11-22T03:00:00.000Z",
       "endDate": "2024-02-15T03:00:00.000Z",
       "id": 5
+    }
+  ],
+  "enrollments": [
+    {
+      "id": 1,
+      "courseId": 3,
+      "userId": 5
+    },
+    {
+      "id": 2,
+      "courseId": 4,
+      "userId": 6
+    },
+    {
+      "id": 3,
+      "courseId": 5,
+      "userId": 4
     }
   ]
 }

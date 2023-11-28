@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { UsuariosService } from '../../usuarios.service';
+import { UsuariosService } from '../../services/usuarios.service';
 
 
 import Swal from 'sweetalert2';

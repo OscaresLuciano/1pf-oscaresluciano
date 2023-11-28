@@ -24,12 +24,6 @@
     <td mat-cell *matCellDef="let usuario">{{ usuario.email }}</td>
   </ng-container>
 
-  <!-- Role Column -->
-  <ng-container matColumnDef="role">
-    <th mat-header-cell *matHeaderCellDef>Tipo de usuario</th>
-    <td mat-cell *matCellDef="let usuario">{{ usuario.role | titlecase }}</td>
-  </ng-container>
-
   <!-- Actions Column -->
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef class="text-center">Acciones</th>
@@ -41,6 +35,7 @@
         (click)="editUsuario.emit(usuario)"
         mat-icon-button
         color="accent"
+        [disabled]="(usuarioRol$ | async) !== 'ADMIN'"
       >
         <mat-icon> edit </mat-icon>
       </button>
@@ -48,6 +43,7 @@
         (click)="deleteUsuario.emit(usuario.id)"
         mat-icon-button
         color="warn"
+        [disabled]="(usuarioRol$ | async) !== 'ADMIN'"
       >
         <mat-icon> delete </mat-icon>
       </button>

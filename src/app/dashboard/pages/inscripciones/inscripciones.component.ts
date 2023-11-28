@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Curso } from 'src/app/core/models';
-import { CursosService } from '../cursos/cursos.service';
+import { CursosService } from '../cursos/services/cursos.service';
 
 @Component({
   selector: 'app-inscripciones',

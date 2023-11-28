@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CursosService } from './cursos.service';
+import { CursosService } from './services/cursos.service';
 import { Observable } from 'rxjs';
 import { Curso } from 'src/app/core/models';
 import { MatDialog } from '@angular/material/dialog';

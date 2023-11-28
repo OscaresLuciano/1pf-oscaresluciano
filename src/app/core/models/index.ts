@@ -1,3 +1,5 @@
+import { UserRole } from "./roles.enum";
+
 export interface Usuario {
     id: number;
     email: string;
@@ -5,7 +7,7 @@ export interface Usuario {
     lastName: string;
     password: string;
     token: string;
-    role: string;
+    role: UserRole;
 }
 
 export interface Curso {
@@ -18,4 +20,12 @@ export interface Curso {
 export interface LoginPayload {
     email: string | null;
     password: string | null;
+}
+
+export interface Enrollment {
+    id: number;
+    courseId: number;
+    useId: number;
+    user?: Usuario;
+    course?: Curso;
 }

@@ -4,7 +4,7 @@ import { UsuariosModalComponent } from './components/usuarios-modal/usuarios-mod
 import { Usuario } from '../../../core/models';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
-import { UsuariosService } from './usuarios.service';
+import { UsuariosService } from './services/usuarios.service';
 
 @Component({
   selector: 'app-usuarios',
