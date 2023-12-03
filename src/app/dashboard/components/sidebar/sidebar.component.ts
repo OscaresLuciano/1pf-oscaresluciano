@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
-import { UserRole } from 'src/app/core/models/roles.enum';
+import { Usuario } from 'src/app/core/models';
 import { selectAuthUser } from 'src/app/store/auth/auth.selectors';
 
 @Component({
@@ -11,7 +11,7 @@ import { selectAuthUser } from 'src/app/store/auth/auth.selectors';
 })
 export class SidebarComponent implements OnInit {
   showFiller = false;
-  usuarioRol$: Observable<UserRole | undefined>;
+  usuarioRol$: Observable<Usuario['role'] | undefined>;
   navItems: string[] = [];
 
   constructor(
@@ -27,15 +27,11 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuarioRol$.subscribe((rol) => {
-      if (rol === UserRole.ADMIN) {
+      if (rol === 'Administrador') {
         this.navItems = ['home', 'cursos', 'usuarios', 'inscripciones'];
       } else {
         this.navItems = ['home', 'cursos', 'inscripciones'];
       }
     });
   }
-  
-  // navItems = [
-  //   'home', 'cursos', 'usuarios', 'inscripciones'
-  // ]
 }

@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, map } from 'rxjs';
-import { Curso } from 'src/app/core/models';
-import { UserRole } from 'src/app/core/models/roles.enum';
+import { Curso, Usuario } from 'src/app/core/models';
 import { selectAuthUser } from 'src/app/store/auth/auth.selectors';
 
 @Component({
@@ -11,7 +10,7 @@ import { selectAuthUser } from 'src/app/store/auth/auth.selectors';
 })
 export class CursosTableComponent {
 
-  usuarioRol$: Observable<UserRole | undefined>
+  usuarioRol$: Observable<Usuario['role'] | undefined>
 
   constructor(private store: Store) {
     this.usuarioRol$ = this.store.select(selectAuthUser).pipe(map((u) => u?.role));

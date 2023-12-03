@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Curso } from 'src/app/core/models';
-import { CursosService } from '../cursos/services/cursos.service';
+import { Store } from '@ngrx/store';
+import { InscripcionActions } from './store/inscripcion.actions';
+import { MatDialog } from '@angular/material/dialog';
+import { InscripcionesModalComponent } from './components/inscripciones-modal/inscripciones-modal.component';
 
 @Component({
   selector: 'app-inscripciones',
@@ -9,13 +10,15 @@ import { CursosService } from '../cursos/services/cursos.service';
   styleUrls: ['./inscripciones.component.scss']
 })
 export class InscripcionesComponent {
-
-  courses$: Observable<Curso[]>;
-
   constructor(
-      private cursosService: CursosService
+      private store: Store,
+      private matDialog: MatDialog
     ) {
-    this.courses$ = this.cursosService.getCourses$()
+    this.store.dispatch(InscripcionActions.loadInscripciones());
   }
 
+  addInscripcion(): void
+  {
+    this.matDialog.open(InscripcionesModalComponent);
+  }
 }

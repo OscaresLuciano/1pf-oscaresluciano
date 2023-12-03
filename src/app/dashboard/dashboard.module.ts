@@ -9,7 +9,6 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MatListModule } from '@angular/material/list';
 
 import { SharedModule } from '../shared/shared.module';
-import { InscripcionesModule } from './pages/inscripciones/inscripciones.module';
 import { HomeModule } from './pages/home/home.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
@@ -24,7 +23,6 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
     CommonModule,
     SharedModule,
     HomeModule,
-    InscripcionesModule,
 
     MatSidenavModule,
     MatToolbarModule,

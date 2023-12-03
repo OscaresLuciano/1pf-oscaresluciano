@@ -42,10 +42,20 @@ export class AuthService {
     .subscribe({
 
       next: (response) => {
-        if(!response.length) {
-          alert('invalido')
+        const authUser = response[0];
+        if(!authUser) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Usuario o contraseña invalido"
+          });
+        } else if(authUser?.role === 'Estudiante'){
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Su usuario no tiene permiso para acceder"
+          });
         } else {
-          const authUser = response[0];
           this.handleAuthUser(authUser);
           this.router.navigate(['/dashboard/home'])
         }

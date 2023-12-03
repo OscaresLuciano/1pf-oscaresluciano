@@ -1,56 +1,73 @@
-<table
-  class="t-3"
-  mat-table
-  [dataSource]="dataSource"
-  class="mat-elevation-z8 text-center"
->
-  <!-- Id Column -->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>ID</th>
-    <td mat-cell *matCellDef="let course">{{ course.id }}</td>
-  </ng-container>
+<mat-spinner
+  *ngIf="isLoading$ | async; else isNotLoading"
+  color="accent"
+  style="margin: 10% auto"
+></mat-spinner>
+<ng-template #isNotLoading>
+  <table
+    class="t-3"
+    mat-table
+    [dataSource]="(inscripciones$ | async) || []"
+    class="mat-elevation-z8 text-center"
+  >
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let inscripcion">{{ inscripcion.id }}</td>
+    </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Curso</th>
-    <td mat-cell *matCellDef="let course">
-      {{ course.name | titlecase }}
-    </td>
-  </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Curso</th>
+      <td mat-cell *matCellDef="let inscripcion">
+        {{ inscripcion.course?.name | titlecase }}
+      </td>
+    </ng-container>
 
-  <!-- Sart Date Column -->
-  <ng-container matColumnDef="startDate">
-    <th mat-header-cell *matHeaderCellDef>Fecha de Inicio</th>
-    <td mat-cell *matCellDef="let course">
-      {{ course.startDate | date : "dd/MM/YYYY" }}
-    </td>
-  </ng-container>
+    <!-- Sart Date Column -->
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef>Fecha de Inicio de Curso</th>
+      <td mat-cell *matCellDef="let inscripcion">
+        {{ inscripcion.course?.startDate | date : "dd/MM/YYYY" }}
+      </td>
+    </ng-container>
 
-  <!-- End Date Column -->
-  <ng-container matColumnDef="endDate">
-    <th mat-header-cell *matHeaderCellDef>Fecha de Fin</th>
-    <td mat-cell *matCellDef="let course">
-      {{ course.endDate | date : "dd/MM/YYYY" }}
-    </td>
-  </ng-container>
+    <!-- End Date Column -->
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef>Fecha de Fin de Curso</th>
+      <td mat-cell *matCellDef="let inscripcion">
+        {{ inscripcion.course?.endDate | date : "dd/MM/YYYY" }}
+      </td>
+    </ng-container>
 
-  <!-- Enroll Column -->
-  <ng-container matColumnDef="enroll">
-    <th mat-header-cell *matHeaderCellDef class="text-center">Inscripciones</th>
+    <!-- Student Column -->
+    <ng-container matColumnDef="student">
+      <th mat-header-cell *matHeaderCellDef>Estudiante Inscripto</th>
+      <td mat-cell *matCellDef="let inscripcion">
+        {{ inscripcion.user | fullName : "uppercase" }}
+      </td>
+    </ng-container>
 
-    <td mat-cell *matCellDef="let course" class="text-center">
-      <button
-        (click)="enroll(course)"
-        mat-flat-button
-        color="primary"
-        [disabled]="course.inscrito"
-      >
-        <mat-icon>add</mat-icon>
-        {{ course.inscrito ? "Inscripto" : "Inscribirme" }}
-      </button>
-    </td>
-  </ng-container>
+    <!-- Enroll Column -->
+    <ng-container matColumnDef="enroll">
+      <th mat-header-cell *matHeaderCellDef class="text-center">
+        Inscripciones
+      </th>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
+      <td mat-cell *matCellDef="let inscripcion" class="text-center">
+        <button
+          (click)="enroll(inscripcion)"
+          mat-flat-button
+          color="primary"
+          [disabled]="inscripcion.inscrito"
+        >
+          <mat-icon>add</mat-icon>
+          {{ inscripcion.inscrito ? "Inscripto" : "Inscribirme" }}
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</ng-template>

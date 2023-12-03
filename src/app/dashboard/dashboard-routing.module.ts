@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { InscripcionesComponent } from "./pages/inscripciones/inscripciones.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { DashboardComponent } from "./dashboard.component";
 import { adminGuard } from "../core/guards/admin.guard";
@@ -32,7 +31,8 @@ const routes: Routes = [
             },
             {
                 path: 'inscripciones',
-                component: InscripcionesComponent,
+                loadChildren: () => import('./pages/inscripciones/inscripciones.module')
+                .then((m) => m.InscripcionesModule)
             },
             {
                 path: '**',

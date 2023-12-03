@@ -3,14 +3,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UsuariosService } from '../../services/usuarios.service';
 
-
 import Swal from 'sweetalert2';
+import { UserRole, UserRoles } from 'src/app/core/models';
 
 @Component({
   selector: 'app-usuarios-modal',
   templateUrl: './usuarios-modal.component.html',
 })
 export class UsuariosModalComponent {
+
+  userRoles: UserRole[] = Object.keys(UserRoles) as UserRole[];
 
   nameControl = new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(20)]);
   lastnameControl = new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(20)]);

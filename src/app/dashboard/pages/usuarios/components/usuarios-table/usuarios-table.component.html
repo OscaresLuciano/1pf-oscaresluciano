@@ -35,7 +35,7 @@
         (click)="editUsuario.emit(usuario)"
         mat-icon-button
         color="accent"
-        [disabled]="(usuarioRol$ | async) !== 'ADMIN'"
+        [disabled]="(usuarioRol$ | async) !== 'Administrador'"
       >
         <mat-icon> edit </mat-icon>
       </button>
@@ -43,7 +43,7 @@
         (click)="deleteUsuario.emit(usuario.id)"
         mat-icon-button
         color="warn"
-        [disabled]="(usuarioRol$ | async) !== 'ADMIN'"
+        [disabled]="(usuarioRol$ | async) !== 'Administrador'"
       >
         <mat-icon> delete </mat-icon>
       </button>

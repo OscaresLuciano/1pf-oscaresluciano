@@ -1,11 +1,11 @@
 {
   "users": [
     {
-      "name": "admin",
-      "lastName": "admin",
+      "name": "Administrador",
+      "lastName": "Administrador",
       "email": "a@mail.com",
       "password": "1111",
-      "role": "ADMIN",
+      "role": "Administrador",
       "token": "jdasugjd89sjg0sdfgjjjs",
       "id": 1
     },
@@ -14,7 +14,7 @@
       "lastName": "de Prueba",
       "email": "e@mail.com",
       "password": 1111,
-      "role": "EMPLOYEE",
+      "role": "Empleado",
       "token": "bnbMQeeukyN1ydHqBMUN",
       "id": 2
     },
@@ -23,7 +23,7 @@
       "lastName": "Papa",
       "email": "ahora@mail.com",
       "password": "asdasdas",
-      "role": "EMPLOYEE",
+      "role": "Estudiante",
       "token": "has78fa7sfa9s8fajss88",
       "id": 3
     },
@@ -34,14 +34,14 @@
       "email": "loscares@mail.com",
       "password": 1111,
       "token": "asfjahga76s8fgtaogda342",
-      "role": "ADMIN"
+      "role": "Administrador"
     },
     {
       "name": "Raul",
       "lastName": "Castro",
       "email": "rcastro@mail.com",
       "password": "1234",
-      "role": "EMPLOYEE",
+      "role": "Empleado",
       "id": 6
     },
     {
@@ -51,15 +51,33 @@
       "email": "mrodriguez@mail.com",
       "password": "asdfafs",
       "token": "Ps2asgh54h45h5t8Lagqp",
-      "role": "EMPLOYEE"
+      "role": "Estudiante"
     },
     {
       "name": "Uciel",
       "lastName": "Dupuy",
       "email": "upu@mail.com",
       "password": "asdasdff",
-      "role": "EMPLOYEE",
+      "role": "Estudiante",
       "id": 8
+    },
+    {
+      "name": "Silvio",
+      "lastName": "Sordera",
+      "email": "ss@mail.com",
+      "password": "1111",
+      "role": "Estudiante",
+      "token": "GKDDQ2nrYmFdMB92NjGu",
+      "id": 9
+    },
+    {
+      "name": "Sergio",
+      "lastName": "Massacote",
+      "email": "massaso@mail.com",
+      "password": "1111",
+      "role": "Profesor",
+      "token": "EUhjRnIKP1CYGZm3BEsM",
+      "id": 10
     }
   ],
   "courses": [
@@ -86,23 +104,44 @@
       "startDate": "2023-11-22T03:00:00.000Z",
       "endDate": "2024-02-15T03:00:00.000Z",
       "id": 5
+    },
+    {
+      "name": "Corte y confección",
+      "startDate": "2023-12-02T03:00:00.000Z",
+      "endDate": "2023-12-31T03:00:00.000Z",
+      "id": 6
     }
   ],
   "enrollments": [
     {
       "id": 1,
       "courseId": 3,
-      "userId": 5
+      "userId": 7
     },
     {
-      "id": 2,
-      "courseId": 4,
-      "userId": 6
+      "courseId": 3,
+      "userId": 9,
+      "id": 2
     },
     {
-      "id": 3,
+      "courseId": 1,
+      "userId": 3,
+      "id": 3
+    },
+    {
+      "courseId": 2,
+      "userId": 7,
+      "id": 4
+    },
+    {
+      "courseId": 6,
+      "userId": 8,
+      "id": 5
+    },
+    {
       "courseId": 5,
-      "userId": 4
+      "userId": 3,
+      "id": 6
     }
   ]
 }

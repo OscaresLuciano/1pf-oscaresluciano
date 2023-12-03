@@ -1,5 +1,9 @@
 <h1 appTextSize fontWeight="500">Inscripciones</h1>
 
-<app-inscripciones-table
-  [dataSource]="(courses$ | async) || []"
-></app-inscripciones-table>
+<div class="pb-3">
+  <button mat-flat-button (click)="addInscripcion()" color="primary">
+    <mat-icon>add</mat-icon>Nueva Inscripción
+  </button>
+</div>
+
+<app-inscripciones-table></app-inscripciones-table>

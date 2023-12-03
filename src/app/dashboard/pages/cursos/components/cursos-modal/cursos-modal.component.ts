@@ -52,7 +52,7 @@ export class CursosModalComponent {
       this.matDialogRef.close(this.courseForm.value);
       Swal.fire(
         '',
-        this.isEditing ? "Curso editado correctamente!" : "Curos agregado correctamente!",
+        this.isEditing ? "Curso editado correctamente!" : "Curso agregado correctamente!",
         'success'
       )
     }

@@ -1,5 +1,3 @@
-import { UserRole } from "./roles.enum";
-
 export interface Usuario {
     id: number;
     email: string;
@@ -9,6 +7,15 @@ export interface Usuario {
     token: string;
     role: UserRole;
 }
+
+export const UserRoles = {
+    Administrador: 'Administrador',
+    Empleado: 'Empleado',
+    Estudiante: 'Estudiante',
+    Profesor: 'Profesor',
+  } as const;
+  
+  export type UserRole = keyof typeof UserRoles;
 
 export interface Curso {
     id: number;
@@ -28,4 +35,9 @@ export interface Enrollment {
     useId: number;
     user?: Usuario;
     course?: Curso;
+}
+
+export interface CreateEnrollmentPayload {
+    courseId: number | null;
+    userId: number | null;
 }

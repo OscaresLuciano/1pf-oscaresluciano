@@ -11,7 +11,7 @@ export const adminGuard: CanActivateFn = (route, state) => {
 
   return store.select(selectAuthUser).pipe(
     map((usuario) => {
-      if (usuario?.role !== 'ADMIN') {
+      if (usuario?.role !== 'Administrador') {
         return router.createUrlTree(['/dashboard/home'])
       } else {
         return true;
