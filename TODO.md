@@ -7,7 +7,6 @@ Project Description
 ### Todo
 
 - [ ] paginacion  
-- [ ] mostrar fecha de curso en inscripcion  
 - [ ] Agregar profesor a inscripciones  
 - [ ] Mensaje cuando la tabla está vacia  
 - [ ] Manejo de errores de forms  
@@ -22,6 +21,8 @@ Project Description
 
 ### Done ✓
 
+- [x] vista mobile  
+- [x] mostrar fecha de curso en inscripcion  
 - [x] Subir api a host  
 - [x] ng build -c production  
 

@@ -1,11 +1,20 @@
-<mat-drawer-container class="dashboard-container" autosize>
-  <mat-drawer style="width: 200px" [opened]="showSidebar" #drawer mode="side">
-    <app-sidebar></app-sidebar>
-  </mat-drawer>
-  <div class="sidebar-content">
-    <app-toolbar (toggleSidebar)="showSidebar = !showSidebar"></app-toolbar>
-    <main>
-      <router-outlet></router-outlet>
-    </main>
+<div class="container-fluid m-0 p-0">
+  <div class="row">
+    <mat-drawer-container class="dashboard-container" autosize>
+      <mat-drawer
+        style="width: 200px"
+        [opened]="showSidebar"
+        #drawer
+        mode="side"
+      >
+        <app-sidebar></app-sidebar>
+      </mat-drawer>
+      <div class="sidebar-content">
+        <app-toolbar (toggleSidebar)="showSidebar = !showSidebar"></app-toolbar>
+        <main>
+          <router-outlet></router-outlet>
+        </main>
+      </div>
+    </mat-drawer-container>
   </div>
-</mat-drawer-container>
+</div>
