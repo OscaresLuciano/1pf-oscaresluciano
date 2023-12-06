@@ -6,6 +6,8 @@ Project Description
 
 ### Todo
 
+- [ ] paginacion  
+- [ ] mostrar fecha de curso en inscripcion  
 - [ ] Agregar profesor a inscripciones  
 - [ ] Mensaje cuando la tabla está vacia  
 - [ ] Manejo de errores de forms  

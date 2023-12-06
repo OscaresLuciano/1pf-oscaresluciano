@@ -12,6 +12,8 @@ export class LoginComponent {
     private authService: AuthService,
     ){}
 
+  emailValue = "";
+  
   emailControl = new FormControl('',[
     Validators.required, Validators.minLength(4), Validators.maxLength(20), Validators.email
   ]);
@@ -23,8 +25,6 @@ export class LoginComponent {
     email: this.emailControl,
     password: this.passwordControl,
   });
-
-  formularioValido = this.loginForm.value 
     
   login(): void {
     if (this.loginForm.invalid) {

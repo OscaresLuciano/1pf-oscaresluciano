@@ -1,7 +1,13 @@
 <form [formGroup]="loginForm">
   <mat-form-field class="w-100">
     <mat-label> Email </mat-label>
-    <input matInput formControlName="email" type="text" />
+    <input
+      matInput
+      formControlName="email"
+      type="text"
+      [ngModel]="emailValue"
+      (ngModelChange)="emailValue = $event.toLowerCase()"
+    />
     <mat-error>
       {{ loginForm.get("email")?.errors | formErrors }}
     </mat-error>

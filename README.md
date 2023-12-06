@@ -4,12 +4,15 @@ Front end de un Panel de gestión de cursos, usuarios e inscripciones. Para la c
 
 Usuario Administrador: admin@mail.com
 Contraseña: 1234
+Todos los permisos
 
 Usuario Empleado: employee@mail.com
 Contraseña: 1234
+Permiso para crear cursos e inscripciones. No puede ver sección usuarios.
 
 Usuario Estudiante: ss@mail.com
 Contraseña: 1234
+Sin permisos para acceder
 
 Secciones:
 

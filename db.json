@@ -28,13 +28,13 @@
       "id": 3
     },
     {
-      "id": 5,
       "name": "Luciano",
       "lastName": "Oscares",
       "email": "loscares@mail.com",
-      "password": 1111,
-      "token": "asfjahga76s8fgtaogda342",
-      "role": "Administrador"
+      "password": "1234",
+      "role": "Administrador",
+      "token": "JFy6hFuN6QjBoxD0Kfuz",
+      "id": 5
     },
     {
       "name": "Raul",
@@ -128,6 +128,12 @@
       "startDate": "2023-12-28T03:00:00.000Z",
       "endDate": "2023-12-31T03:00:00.000Z",
       "id": 9
+    },
+    {
+      "name": "vue.js",
+      "startDate": "2023-12-29T03:00:00.000Z",
+      "endDate": "2023-12-31T03:00:00.000Z",
+      "id": 10
     }
   ],
   "enrollments": [
@@ -170,6 +176,11 @@
       "courseId": 1,
       "userId": 3,
       "id": 11
+    },
+    {
+      "courseId": 10,
+      "userId": 9,
+      "id": 12
     }
   ]
 }

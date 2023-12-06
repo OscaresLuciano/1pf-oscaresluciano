@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { CursosService } from '../../services/cursos.service';
 import { Curso, Inscripcion, Usuario } from 'src/app/core/models';
 import { Observable, map, of } from 'rxjs';
-import { InscripcionesService } from '../../../inscripciones/services/inscripciones.service';
 import { Store } from '@ngrx/store';
 import { selectAuthUser } from 'src/app/store/auth/auth.selectors';
 
@@ -21,7 +20,6 @@ export class CursosDetailComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private cursosService: CursosService,
-    private inscripcionesService: InscripcionesService,
     private store: Store
   ) {
     this.usuarioRol$ = this.store.select(selectAuthUser).pipe(map((u) => u?.role));
