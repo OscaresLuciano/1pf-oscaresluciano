@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/PF-OscaresLuciano",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
