@@ -34,7 +34,13 @@
       <div class="col-6">
         <mat-form-field class="w-100">
           <mat-label>Email</mat-label>
-          <input formControlName="email" matInput type="email" />
+          <input
+            formControlName="email"
+            matInput
+            type="email"
+            [ngModel]="emailValue"
+            (ngModelChange)="emailValue = $event.toLowerCase()"
+          />
           <mat-error>
             {{ usuarioForm.get("email")?.errors | formErrors }}
           </mat-error>
@@ -46,7 +52,14 @@
       <div class="col-6">
         <mat-form-field class="w-100">
           <mat-label>Password</mat-label>
-          <input formControlName="password" matInput type="password" />
+          <input
+            formControlName="password"
+            matInput
+            [type]="hide ? 'password' : 'text'"
+          />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
           <mat-error>
             {{ usuarioForm.get("password")?.errors | formErrors }}
           </mat-error>

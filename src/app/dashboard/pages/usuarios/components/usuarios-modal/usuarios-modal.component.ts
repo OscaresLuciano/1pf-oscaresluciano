@@ -12,6 +12,8 @@ import { UserRole, UserRoles, Usuario } from 'src/app/core/models';
 })
 export class UsuariosModalComponent {
 
+  emailValue = "";
+  hide = true;
   userRoles: UserRole[] = Object.keys(UserRoles) as UserRole[];
 
   nameControl = new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(20)]);
