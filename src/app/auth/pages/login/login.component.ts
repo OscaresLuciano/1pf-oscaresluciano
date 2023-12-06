@@ -13,6 +13,7 @@ export class LoginComponent {
     ){}
 
   emailValue = "";
+  hide = true;
   
   emailControl = new FormControl('',[
     Validators.required, Validators.minLength(4), Validators.maxLength(20), Validators.email

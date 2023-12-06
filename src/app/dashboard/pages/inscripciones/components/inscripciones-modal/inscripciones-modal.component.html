@@ -12,7 +12,9 @@
               [value]="course.id"
               *ngFor="let course of cursoOptions$ | async"
             >
-              {{ course.name | titlecase }}
+              {{ course.name | titlecase }} <br />
+              ({{ course.startDate | date : "dd/MM/YY" }} -
+              {{ course.endDate | date : "dd/MM/YY" }})
             </mat-option>
           </mat-select>
           <mat-error>

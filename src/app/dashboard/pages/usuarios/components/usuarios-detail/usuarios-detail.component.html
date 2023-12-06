@@ -20,7 +20,9 @@
                   class="pt-3"
                   *ngFor="let inscripcion of inscripciones$ | async"
                 >
-                  <p fontWeight="bold">- {{ inscripcion.course?.name }}</p>
+                  <p fontWeight="bold">
+                    - {{ inscripcion.course?.name | titlecase }}
+                  </p>
                   <p>
                     Fecha de inicio:
                     {{ inscripcion.course?.startDate | date : "dd/MM/YYYY" }}

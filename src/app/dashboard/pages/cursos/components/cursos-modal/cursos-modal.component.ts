@@ -13,7 +13,7 @@ export class CursosModalComponent {
 
   nameValue = "";
 
-  nameControl = new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(20)]);
+  nameControl = new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(20)]);
   startDateControl = new FormControl('',[Validators.required]);
   endDateControl = new FormControl('',[Validators.required]);
 

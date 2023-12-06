@@ -28,15 +28,6 @@
       "id": 3
     },
     {
-      "name": "Luciano",
-      "lastName": "Oscares",
-      "email": "loscares@mail.com",
-      "password": "1234",
-      "role": "Administrador",
-      "token": "JFy6hFuN6QjBoxD0Kfuz",
-      "id": 5
-    },
-    {
       "name": "Raul",
       "lastName": "Castro",
       "email": "rcastro@mail.com",
@@ -181,6 +172,11 @@
       "courseId": 10,
       "userId": 9,
       "id": 12
+    },
+    {
+      "courseId": 9,
+      "userId": 7,
+      "id": 13
     }
   ]
 }
