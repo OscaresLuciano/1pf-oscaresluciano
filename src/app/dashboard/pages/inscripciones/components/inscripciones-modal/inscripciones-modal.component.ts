@@ -1,22 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { InscripcionActions } from '../../store/inscripcion.actions';
-import { Observable, take } from 'rxjs';
-import { Curso, Usuario } from 'src/app/core/models';
-import { selectCursoOptions, selectEnrollmentsIsLoadingDialogOptions, selectEstudianteOptions } from '../../store/inscripcion.selectors';
-import { Actions, ofType } from '@ngrx/effects';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { InscripcionesService } from '../../services/inscripciones.service';
+import { Observable, map, of, switchMap } from 'rxjs';
+import { Curso, Inscripcion, Usuario } from 'src/app/core/models';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-inscripciones-modal',
   templateUrl: './inscripciones-modal.component.html'
 })
 export class InscripcionesModalComponent {
-    
-  cursoOptions$: Observable<Curso[]>;
-  estudianteOptions$: Observable<Usuario[]>
-  isLoading$: Observable<boolean>
+
+  cursoOptions$!: Observable<Curso[]>;
+  estudianteOptions$!: Observable<Usuario[]>;
 
   courseIdControl = new FormControl<number | null>(null,[Validators.required]);
   userIdControl = new FormControl<number | null>(null,[Validators.required]);
@@ -27,48 +24,61 @@ export class InscripcionesModalComponent {
   })
 
   constructor(
-    private store: Store,
-    private actions$: Actions,
-    private matDialogRef: MatDialogRef<InscripcionesModalComponent>
-    ){
-    this.store.dispatch(InscripcionActions.loadInscripcionesDialogOptions());
+    private matDialogRef: MatDialogRef<InscripcionesModalComponent>,
+    private inscripcionesService: InscripcionesService,
+    @Inject(MAT_DIALOG_DATA) private inscripcionId?: number,
+    ) {}
 
-    this.cursoOptions$ = this.store.select(selectCursoOptions);
-    this.estudianteOptions$ = this.store.select(selectEstudianteOptions);
-    this.isLoading$ = this.store.select(selectEnrollmentsIsLoadingDialogOptions);
-
-    this.actions$
-      .pipe(ofType(InscripcionActions.loadInscripciones), take(1))
-      .subscribe({
-        next: () => this.matDialogRef.close()
+    ngOnInit(): void {
+      this.inscripcionesService.getInscripcionDialogOptions$().subscribe({
+        next: (options) => {
+          this.cursoOptions$ = of(options.cursos);
+          this.estudianteOptions$ = of(options.estudiantes);
+  
+          if (this.inscripcionId) {
+            this.inscripcionesService.getInscripcionById$(this.inscripcionId).subscribe({
+              next: (c) => {
+                if (c) {
+                  this.inscripcionesForm.patchValue(c);
+                }
+              }
+            });
+          }
+        }
       });
-  }
-
-  onSubmit(): void {
-    if(this.inscripcionesForm.invalid) {
-      return this.inscripcionesForm.markAllAsTouched();
-    } else {
-      this.store.dispatch(
-        InscripcionActions.createInscripcion({
-          payload: this.inscripcionesForm.getRawValue()
-      }))
     }
-  }
+
+    public get isEditing(): boolean {
+      return !!this.inscripcionId
+    }
+
+    onSubmit(): void {
+      if (this.inscripcionesForm.invalid) {
+        return this.inscripcionesForm.markAllAsTouched();
+      } else {
+        const inscripcionPayload = this.inscripcionesForm.value as Inscripcion;
+        
+        this.inscripcionesService.getInscripciones$().pipe(
+          map(inscripciones => inscripciones.find(
+            inscripcion => inscripcion.courseId === inscripcionPayload.courseId && inscripcion.userId === inscripcionPayload.userId
+          )),
+          switchMap(existingInscripcion => {
+            if (existingInscripcion) {
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "El usuario seleccionado ya está inscripto!",
+              });
+              return of(null);
+            } else {
+              return this.inscripcionesService.createInscripcion$(inscripcionPayload);
+            }
+          })
+        ).subscribe((result) => {
+          if (result !== null) {
+            this.matDialogRef.close(result);
+          }
+        });
+      }
+    }
 }
-
-//   public get isEditing(): boolean {
-//     return !!this.courseId
-//   }
-
-// onSubmit(): void {
-//   if (this.inscripcionesForm.invalid) {
-//     return this.inscripcionesForm.markAllAsTouched();
-//   } else {
-//     this.matDialogRef.close(this.inscripcionesForm.value);
-//     Swal.fire(
-//       '',
-//       this.isEditing ? "Estudiante inscripto!" : "Curos agregado correctamente!",
-//       'success'
-//       )
-//     }
-//   }

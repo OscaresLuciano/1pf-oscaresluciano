@@ -29,15 +29,15 @@ export interface LoginPayload {
     password: string | null;
 }
 
-export interface Enrollment {
+export interface Inscripcion {
     id: number;
     courseId: number;
-    useId: number;
+    userId: number;
     user?: Usuario;
     course?: Curso;
 }
 
-export interface CreateEnrollmentPayload {
+export interface CreateInscripcionPayload {
     courseId: number | null;
     userId: number | null;
 }

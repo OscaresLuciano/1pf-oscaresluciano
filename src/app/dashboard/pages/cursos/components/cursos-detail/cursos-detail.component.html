@@ -12,18 +12,37 @@
             Fecha de inicio de curso: {{ curso.startDate | date : "dd/MM/YY" }}
           </p>
           <p>Fecha de fin de curso: {{ curso.endDate | date : "dd/MM/YY" }}</p>
+
+          <ng-container *ngIf="inscripciones$ | async as inscripciones">
+            <ng-container
+              *ngIf="inscripciones.length > 0; else noInscripciones"
+            >
+              <mat-card class="my-custom-card">
+                <mat-card-title> Inscritos: </mat-card-title>
+                <ul style="list-style: none">
+                  <li class="pt-3" *ngFor="let inscripcion of inscripciones">
+                    <p fontWeight="bold">
+                      - {{ inscripcion.user?.name }}
+                      {{ inscripcion.user?.lastName }}
+                    </p>
+                    <p>Email: {{ inscripcion.user?.email }}</p>
+                    <mat-card-actions>
+                      <button
+                        class="btn btn-danger btn-sm"
+                        color="warn"
+                        (click)="eliminarInscripcion(inscripcion.id)"
+                      >
+                        Eliminar inscripción
+                      </button>
+                    </mat-card-actions>
+                    <mat-divider class="custom-divider"></mat-divider>
+                  </li>
+                </ul>
+              </mat-card>
+            </ng-container>
+          </ng-container>
+          <ng-template #noInscripciones> </ng-template>
         </mat-card-content>
-        <mat-card-actions class="py-3">
-          <button
-            (click)="enroll()"
-            mat-flat-button
-            color="primary"
-            [disabled]="inscripto"
-          >
-            <mat-icon>add</mat-icon>
-            {{ inscripto ? "Inscripto" : "Inscribirme" }}
-          </button>
-        </mat-card-actions>
       </mat-card>
     </div>
   </div>

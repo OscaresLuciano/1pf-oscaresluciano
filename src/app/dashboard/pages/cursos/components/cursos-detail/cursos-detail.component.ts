@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CursosService } from '../../services/cursos.service';
-import { Curso } from 'src/app/core/models';
-import { Observable, of } from 'rxjs';
+import { Curso, Inscripcion, Usuario } from 'src/app/core/models';
+import { Observable, map, of } from 'rxjs';
+import { InscripcionesService } from '../../../inscripciones/services/inscripciones.service';
+import { Store } from '@ngrx/store';
+import { selectAuthUser } from 'src/app/store/auth/auth.selectors';
 
 @Component({
   selector: 'app-cursos-detail',
@@ -11,21 +14,38 @@ import { Observable, of } from 'rxjs';
 })
 export class CursosDetailComponent implements OnInit {
 
-  inscripto: boolean = false;
-
   curso$: Observable<Curso | undefined> = of(undefined);
+  inscripciones$: Observable<Inscripcion[]> = of([]);
+  usuarioRol$: Observable<Usuario['role'] | undefined>
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private cursosService: CursosService
-  ) {}
+    private cursosService: CursosService,
+    private inscripcionesService: InscripcionesService,
+    private store: Store
+  ) {
+    this.usuarioRol$ = this.store.select(selectAuthUser).pipe(map((u) => u?.role));
+  }
 
   ngOnInit() {
     const cursoId = +this.activatedRoute.snapshot.params['id'];
-    this.curso$ = this.cursosService.getCourseById$(cursoId);
+    this.curso$ = this.cursosService.getCursoWithInscripciones$(cursoId).pipe(
+      map(data => data.curso)
+    );
+    this.inscripciones$ = this.cursosService.getCursoWithInscripciones$(cursoId).pipe(
+      map(data => data.inscripciones)
+    );
   }
 
-  enroll() {
-    this.inscripto = true;
+  eliminarInscripcion(inscripcionId: number): void {
+    if (inscripcionId) {
+      this.cursosService.deleteInscripcionCurso$(inscripcionId).subscribe(() => {
+        const cursoId = +this.activatedRoute.snapshot.params['id'];
+        // Actualizar la lista de inscripciones después de eliminar una
+        this.inscripciones$ = this.cursosService.getCursoWithInscripciones$(cursoId).pipe(
+          map(data => data.inscripciones)
+        );
+      });
+    }
   }
 }

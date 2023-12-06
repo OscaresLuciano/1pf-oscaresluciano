@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, concatMap } from 'rxjs';
-import { Usuario } from '../../../../core/models';
+import { Observable, concatMap, map, of } from 'rxjs';
+import { Inscripcion, Usuario } from '../../../../core/models';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.local';
 import * as SharedHelpers from '../../../../shared/helpers';
@@ -41,6 +41,20 @@ export class UsuariosService {
     return this.httpClient
       .put<Usuario>(`${environment.baseUrl}/users/${usuarioId}`, payloadWithToken)
       .pipe(concatMap(() => this.getUsuarios$()))
+  }
+
+  getUsuarioWithInscripciones$(usuarioId: number): Observable<{ usuario: Usuario | undefined, inscripciones: Inscripcion[] }> {
+    return this.getUsuarioById$(usuarioId).pipe(
+      concatMap((usuario: Usuario | undefined) => {
+        if (usuario) {
+          return this.httpClient.get<Inscripcion[]>(`${environment.baseUrl}/enrollments?userId=${usuarioId}&_expand=course&_expand=user`).pipe(
+            map((inscripciones: Inscripcion[]) => ({ usuario, inscripciones }))
+          );
+        } else {
+          return of({ usuario: undefined, inscripciones: [] });
+        }
+      })
+    );
   }
 
   getUsuarioById$(usuarioId: number): Observable<Usuario | undefined> {

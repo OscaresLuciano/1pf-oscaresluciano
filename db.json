@@ -10,12 +10,12 @@
       "id": 1
     },
     {
-      "name": "Emplea2",
+      "name": "Empleado",
       "lastName": "de Prueba",
       "email": "e@mail.com",
       "password": 1111,
       "role": "Empleado",
-      "token": "bnbMQeeukyN1ydHqBMUN",
+      "token": "fPKG0RyGgwt9PtaDx3cP",
       "id": 2
     },
     {
@@ -78,6 +78,15 @@
       "role": "Profesor",
       "token": "EUhjRnIKP1CYGZm3BEsM",
       "id": 10
+    },
+    {
+      "name": "duplicado",
+      "lastName": "duplicado",
+      "email": "duplicado@mail.com",
+      "password": "duplicado",
+      "role": "Estudiante",
+      "token": "dyRiuYdBJ4E7gelhYrmu",
+      "id": 11
     }
   ],
   "courses": [
@@ -106,28 +115,31 @@
       "id": 5
     },
     {
-      "name": "Corte y confección",
+      "name": "Photoshop",
       "startDate": "2023-12-02T03:00:00.000Z",
       "endDate": "2023-12-31T03:00:00.000Z",
       "id": 6
+    },
+    {
+      "name": "Prueba",
+      "startDate": "2023-12-13T03:00:00.000Z",
+      "endDate": "2023-12-27T03:00:00.000Z",
+      "id": 7
+    },
+    {
+      "name": "Illustrator",
+      "startDate": "2024-01-01T03:00:00.000Z",
+      "endDate": "2024-01-31T03:00:00.000Z",
+      "id": 8
+    },
+    {
+      "name": "NExt.js",
+      "startDate": "2023-12-28T03:00:00.000Z",
+      "endDate": "2023-12-31T03:00:00.000Z",
+      "id": 9
     }
   ],
   "enrollments": [
-    {
-      "id": 1,
-      "courseId": 3,
-      "userId": 7
-    },
-    {
-      "courseId": 3,
-      "userId": 9,
-      "id": 2
-    },
-    {
-      "courseId": 1,
-      "userId": 3,
-      "id": 3
-    },
     {
       "courseId": 2,
       "userId": 7,
@@ -142,6 +154,26 @@
       "courseId": 5,
       "userId": 3,
       "id": 6
+    },
+    {
+      "courseId": 2,
+      "userId": 9,
+      "id": 7
+    },
+    {
+      "courseId": 5,
+      "userId": 3,
+      "id": 8
+    },
+    {
+      "courseId": 5,
+      "userId": 9,
+      "id": 9
+    },
+    {
+      "courseId": 5,
+      "userId": 8,
+      "id": 10
     }
   ]
 }

@@ -5,6 +5,7 @@ import { Directive, ElementRef, Renderer2, Input } from '@angular/core';
 })
 export class TextSizeDirective {
   private _fontWeight = 'normal';
+  private _fontSize = '20px';
 
   @Input()
   get fontWeight() {
@@ -16,14 +17,29 @@ export class TextSizeDirective {
     this.setFontWeight();
   }
 
+  @Input()
+  get fontSize() {
+    return this._fontSize;
+  }
+
+  set fontSize(newValue: string) {
+    this._fontSize = newValue;
+    this.setFontSize();
+  }
+
   constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2
-    ) {
-      this.renderer.setStyle(this.elementRef.nativeElement, 'font-size', '20px');
-   }
+  ) {
+    this.setFontSize();
+    this.setFontWeight();
+  }
 
-   setFontWeight(): void {
+  setFontSize(): void {
+    this.renderer.setStyle(this.elementRef.nativeElement, 'font-size', this.fontSize);
+  }
+
+  setFontWeight(): void {
     this.renderer.setStyle(this.elementRef.nativeElement, 'font-weight', this.fontWeight);
-   }
+  }
 }

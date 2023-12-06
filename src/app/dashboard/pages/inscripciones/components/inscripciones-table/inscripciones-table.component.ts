@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Curso, Enrollment } from 'src/app/core/models';
-import { selectEnrollments, selectEnrollmentsIsLoading } from '../../store/inscripcion.selectors';
+import { Observable, map } from 'rxjs';
+import { Inscripcion, Usuario } from 'src/app/core/models';
+import { selectAuthUser } from 'src/app/store/auth/auth.selectors';
 
 @Component({
   selector: 'app-inscripciones-table',
@@ -10,21 +10,21 @@ import { selectEnrollments, selectEnrollmentsIsLoading } from '../../store/inscr
 })
 export class InscripcionesTableComponent {
 
-  inscripciones$: Observable<Enrollment[]>;
-  isLoading$: Observable<boolean>;
+  usuarioRol$: Observable<Usuario['role'] | undefined>
 
   constructor(private store: Store) {
-    this.inscripciones$ = this.store.select(selectEnrollments);
-    this.isLoading$ = this.store.select(selectEnrollmentsIsLoading);
+    this.usuarioRol$ = this.store.select(selectAuthUser).pipe(map((u) => u?.role));
   }
   
   @Input()
-  dataSource: Curso[] = [];
-
-  enroll(course: any) {
-    course.inscrito = true;
-  }
-
-  displayedColumns = ['id', 'name', 'startDate', 'endDate', 'student', 'enroll'];
+  dataSource: Inscripcion[] = [];
+  
+  @Output()
+  deleteInscripcion = new EventEmitter<number>();
+  
+  @Output()
+  editInscripcion = new EventEmitter<Inscripcion>();
+  
+  displayedColumns = ['id', 'name', 'startDate', 'endDate', 'student', 'actions'];
 
 }

@@ -10,14 +10,16 @@ Project Description
 - [ ] Mensaje cuando la tabla está vacia  
 - [ ] Manejo de errores de forms  
 - [ ] Cambiar paleta de colores  
-- [ ] Subir api a host  
 - [ ] Global loading  
 - [ ] Profesores section  
 - [ ] Agregar tests  
+- [ ] fix auth test  
 
 ### In Progress
 
 
 ### Done ✓
 
+- [x] Subir api a host  
+- [x] ng build -c production  
 

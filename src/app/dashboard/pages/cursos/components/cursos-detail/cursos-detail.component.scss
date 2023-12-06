@@ -1,7 +1,30 @@
 .my-custom-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
+  width: 100%;
+  max-width: 600px;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+mat-card-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+mat-card-content {
+  font-size: 16px;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  margin-bottom: 20px;
+}
+
+.custom-divider {
+  width: 90%;
+  margin: 0 auto;
+}

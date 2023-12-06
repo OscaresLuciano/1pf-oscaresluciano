@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UsuariosService } from '../../services/usuarios.service';
 
 import Swal from 'sweetalert2';
-import { UserRole, UserRoles } from 'src/app/core/models';
+import { UserRole, UserRoles, Usuario } from 'src/app/core/models';
 
 @Component({
   selector: 'app-usuarios-modal',
@@ -52,12 +52,20 @@ export class UsuariosModalComponent {
     if (this.usuarioForm.invalid) {
       this.usuarioForm.markAllAsTouched();
     } else {
-      this.matDialogRef.close(this.usuarioForm.value);
-      Swal.fire(
-        '',
-        this.isEditing ? "Usuario editado correctamente!" : "Usuario agregado correctamente!",
-        'success'
-      )
+      const newUser = this.usuarioForm.value;
+      this.usuariosService.getUsuarios$().subscribe((usuarios: Usuario[]) => {
+        const userExists = usuarios.some(user => user.email === newUser.email);
+        if (userExists) {
+          Swal.fire('', 'El usuario ya existe en la base de datos', 'error');
+        } else {
+          this.matDialogRef.close(newUser);
+          Swal.fire(
+            '',
+            this.isEditing ? 'Usuario editado correctamente!' : 'Usuario agregado correctamente!',
+            'success'
+          );
+        }
+      });
     }
   }
 

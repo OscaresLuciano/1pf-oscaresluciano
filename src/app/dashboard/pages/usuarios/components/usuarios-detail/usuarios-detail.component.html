@@ -1,17 +1,51 @@
 <div class="container d-flex align-items-center justify-content-center">
-  <div class="col-8">
-    <div *ngIf="usuario$ | async as usuario">
-      <mat-card class="my-custom-card">
-        <mat-card-header>
-          <mat-card-title>
-            <h2>{{ usuario | fullName : "uppercase" }}</h2>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>Email: {{ usuario.email }}</p>
-          <p>Tipo de usuario: {{ usuario.role | titlecase }}</p>
-        </mat-card-content>
-      </mat-card>
-    </div>
+  <div *ngIf="usuario$ | async as usuario">
+    <mat-card class="my-custom-card">
+      <mat-card-header>
+        <mat-card-title>
+          <p>{{ usuario | fullName : "uppercase" }}</p>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content appTextSize fontWeight="normal" fontSize="18px">
+        <p>Email: {{ usuario.email }}</p>
+        <p *ngIf="(usuarioRol$ | async) === 'Administrador'">
+          Tipo de usuario: {{ usuario.role | titlecase }}
+        </p>
+        <ng-container *ngIf="inscripciones$ | async as inscripciones">
+          <ng-container *ngIf="inscripciones.length > 0; else noInscripciones">
+            <mat-card class="my-custom-card">
+              <mat-card-title> Inscripciones: </mat-card-title>
+              <ul style="list-style: none">
+                <li
+                  class="pt-3"
+                  *ngFor="let inscripcion of inscripciones$ | async"
+                >
+                  <p fontWeight="bold">- {{ inscripcion.course?.name }}</p>
+                  <p>
+                    Fecha de inicio:
+                    {{ inscripcion.course?.startDate | date : "dd/MM/YYYY" }}
+                  </p>
+                  <p>
+                    Fecha de finalización:
+                    {{ inscripcion.course?.endDate | date : "dd/MM/YYYY" }}
+                  </p>
+                  <mat-card-actions>
+                    <button
+                      class="btn btn-danger btn-sm"
+                      color="warn"
+                      (click)="eliminarInscripcion(inscripcion.id)"
+                    >
+                      Eliminar inscripcion
+                    </button>
+                  </mat-card-actions>
+                  <mat-divider class="custom-divider"></mat-divider>
+                </li>
+              </ul>
+            </mat-card>
+          </ng-container>
+        </ng-container>
+        <ng-template #noInscripciones> </ng-template>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

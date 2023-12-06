@@ -1,3 +1,3 @@
 export const environment = {
-    baseUrl: 'http://my-app-angular-curso.com/api',
+    baseUrl: 'https://pf-api-oscaresluciano.onrender.com',
 }

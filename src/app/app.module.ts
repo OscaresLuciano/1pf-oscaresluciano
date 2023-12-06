@@ -25,7 +25,6 @@ import { EffectsModule } from '@ngrx/effects';
     CoreModule,
     StoreModule.forRoot(appReducer, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]
