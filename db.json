@@ -3,19 +3,19 @@
     {
       "name": "Administrador",
       "lastName": "Administrador",
-      "email": "a@mail.com",
-      "password": "1111",
+      "email": "admin@mail.com",
+      "password": "1234",
       "role": "Administrador",
-      "token": "jdasugjd89sjg0sdfgjjjs",
+      "token": "LtmTxPUIRw0dojvufC6Q",
       "id": 1
     },
     {
       "name": "Empleado",
       "lastName": "de Prueba",
-      "email": "e@mail.com",
-      "password": 1111,
+      "email": "employee@mail.com",
+      "password": "1234",
       "role": "Empleado",
-      "token": "fPKG0RyGgwt9PtaDx3cP",
+      "token": "fPXsHtDbaMq2MqGuzIg8",
       "id": 2
     },
     {
@@ -65,9 +65,9 @@
       "name": "Silvio",
       "lastName": "Sordera",
       "email": "ss@mail.com",
-      "password": "1111",
+      "password": "1234",
       "role": "Estudiante",
-      "token": "GKDDQ2nrYmFdMB92NjGu",
+      "token": "OgzSRsHzxAxuMcGdlB1T",
       "id": 9
     },
     {
@@ -78,15 +78,6 @@
       "role": "Profesor",
       "token": "EUhjRnIKP1CYGZm3BEsM",
       "id": 10
-    },
-    {
-      "name": "duplicado",
-      "lastName": "duplicado",
-      "email": "duplicado@mail.com",
-      "password": "duplicado",
-      "role": "Estudiante",
-      "token": "dyRiuYdBJ4E7gelhYrmu",
-      "id": 11
     }
   ],
   "courses": [
@@ -152,7 +143,7 @@
     },
     {
       "courseId": 5,
-      "userId": 3,
+      "userId": 9,
       "id": 6
     },
     {
@@ -171,9 +162,14 @@
       "id": 9
     },
     {
-      "courseId": 5,
-      "userId": 8,
+      "courseId": 2,
+      "userId": 3,
       "id": 10
+    },
+    {
+      "courseId": 1,
+      "userId": 3,
+      "id": 11
     }
   ]
 }

@@ -52,20 +52,12 @@ export class UsuariosModalComponent {
     if (this.usuarioForm.invalid) {
       this.usuarioForm.markAllAsTouched();
     } else {
-      const newUser = this.usuarioForm.value;
-      this.usuariosService.getUsuarios$().subscribe((usuarios: Usuario[]) => {
-        const userExists = usuarios.some(user => user.email === newUser.email);
-        if (userExists) {
-          Swal.fire('', 'El usuario ya existe en la base de datos', 'error');
-        } else {
-          this.matDialogRef.close(newUser);
-          Swal.fire(
-            '',
-            this.isEditing ? 'Usuario editado correctamente!' : 'Usuario agregado correctamente!',
-            'success'
-          );
-        }
-      });
+      this.matDialogRef.close(this.usuarioForm.value);
+      Swal.fire(
+        '',
+        this.isEditing ? "Usuario editado correctamente!" : "Usuario agregado correctamente!",
+        'success'
+      )
     }
   }
 

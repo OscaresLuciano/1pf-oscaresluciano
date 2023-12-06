@@ -47,10 +47,6 @@
     <th mat-header-cell *matHeaderCellDef class="text-center">Acciones</th>
 
     <td mat-cell *matCellDef="let inscripcion" class="text-center">
-      <button [routerLink]="inscripcion.id" mat-icon-button color="primary">
-        <mat-icon> visibility </mat-icon>
-      </button>
-
       <button
         (click)="editInscripcion.emit(inscripcion)"
         mat-icon-button

@@ -4,7 +4,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CursosService } from '../../services/cursos.service';
 
 import Swal from 'sweetalert2';
-import { Curso } from 'src/app/core/models';
 
 @Component({
   selector: 'app-cursos-modal',
@@ -44,34 +43,16 @@ export class CursosModalComponent {
       return !!this.courseId
     }
 
-    onSubmit(): void {
-      if (this.courseForm.invalid) {
-        return this.courseForm.markAllAsTouched();
-      } else {
-        const newCourse = this.courseForm.value;
-        this.cursosService.getCourses$().subscribe((cursos: Curso[]) => {
-          const courseExists = cursos.some(curso =>
-            this.areDatesEqual(curso.startDate, newCourse.startDate) &&
-            this.areDatesEqual(curso.endDate, newCourse.endDate)
-          );
-          if (courseExists) {
-            Swal.fire('', 'El curso ya existe en la base de datos', 'error');
-          } else {
-            this.matDialogRef.close(newCourse);
-            Swal.fire(
-              '',
-              this.isEditing ? 'Curso editado correctamente!' : 'Curso agregado correctamente!',
-              'success'
-            );
-          }
-        });
-      }
+  onSubmit(): void {
+    if (this.courseForm.invalid) {
+      return this.courseForm.markAllAsTouched();
+    } else {
+      this.matDialogRef.close(this.courseForm.value);
+      Swal.fire(
+        '',
+        this.isEditing ? "Curso editado correctamente!" : "Curso agregado correctamente!",
+        'success'
+      )
     }
-  
-    areDatesEqual(date1: string | null | undefined, date2: string | null | undefined): boolean {
-      if (!date1 || !date2) {
-        return date1 === date2;
-      }
-      return new Date(date1).getTime() === new Date(date2).getTime();
-    }
+  }
 }
