@@ -70,7 +70,7 @@ export class CursosModalComponent {
   
     areDatesEqual(date1: string | null | undefined, date2: string | null | undefined): boolean {
       if (!date1 || !date2) {
-        return date1 === date2; // Si ambos son null o undefined, se consideran iguales
+        return date1 === date2;
       }
       return new Date(date1).getTime() === new Date(date2).getTime();
     }

@@ -62,9 +62,6 @@
             <mat-option *ngFor="let role of userRoles" [value]="role">
               {{ role | titlecase }}
             </mat-option>
-            <!-- <mat-option value="ADMIN">Administrador</mat-option>
-            <mat-option value="EMPLOYEE">Empleado</mat-option>
-            <mat-option value="STUDENT">Estudiante</mat-option> -->
           </mat-select>
           <mat-error>
             {{ usuarioForm.get("role")?.errors | formErrors }}

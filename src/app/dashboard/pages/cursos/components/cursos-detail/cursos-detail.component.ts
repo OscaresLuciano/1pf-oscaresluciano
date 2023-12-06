@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { CursosService } from '../../services/cursos.service';
 import { Curso, Inscripcion, Usuario } from 'src/app/core/models';
 import { Observable, map, of } from 'rxjs';
@@ -41,7 +41,6 @@ export class CursosDetailComponent implements OnInit {
     if (inscripcionId) {
       this.cursosService.deleteInscripcionCurso$(inscripcionId).subscribe(() => {
         const cursoId = +this.activatedRoute.snapshot.params['id'];
-        // Actualizar la lista de inscripciones después de eliminar una
         this.inscripciones$ = this.cursosService.getCursoWithInscripciones$(cursoId).pipe(
           map(data => data.inscripciones)
         );

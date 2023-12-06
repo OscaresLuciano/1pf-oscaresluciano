@@ -51,7 +51,6 @@ export class UsuariosComponent {
   }
   
   onEditUsuario(usuario: Usuario): void {
-    //usar generateRandomString(longitud) para generar token
     this.matDialog
       .open(UsuariosModalComponent, {
         data: usuario.id,
