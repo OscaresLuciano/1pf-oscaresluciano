@@ -1,10 +1,6 @@
-<div class="container p-0">
-  <div class="row">
-    <mat-toolbar class="flex justify-content-between" color="primary">
-      <button (click)="toggleSidebar.emit()" mat-icon-button>
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>{{ title }}</span>
-    </mat-toolbar>
-  </div>
-</div>
+<mat-toolbar class="flex justify-content-between" color="primary">
+  <button (click)="toggleSidebar.emit()" mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>{{ title }}</span>
+</mat-toolbar>
