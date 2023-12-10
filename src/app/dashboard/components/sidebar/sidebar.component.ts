@@ -10,7 +10,7 @@ import { selectAuthUser } from 'src/app/store/auth/auth.selectors';
   templateUrl: './sidebar.component.html'
 })
 export class SidebarComponent implements OnInit {
-  showFiller = false;
+  showFiller = true;
   usuarioRol$: Observable<Usuario['role'] | undefined>;
   navItems: string[] = [];
 
