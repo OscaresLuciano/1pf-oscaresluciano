@@ -46,7 +46,7 @@ Instalar dependencias
 Iniciar el JSON server
 
 ```bash
-json-server db.js --watch
+json-server db.json --watch
 ```
 
 Iniciar el server
