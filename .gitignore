@@ -41,4 +41,11 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Mock DB
 db.json
+
+# Firebase
+.firebase
+
+# TODO
+TODO.md
