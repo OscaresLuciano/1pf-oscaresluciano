@@ -6,7 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: []
 })
 export class ToolbarComponent {
-  title = 'Proyecto Final - Entrega final'
+  title = 'Proyecto PACUI'
   @Output()
   toggleSidebar = new EventEmitter();
 
